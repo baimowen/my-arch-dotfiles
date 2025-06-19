@@ -6,6 +6,7 @@ esac
 [ -f ~/.config/shell/colors.sh ] && source ~/.config/shell/colors.sh
 [ -f ~/.config/shell/aliases.sh ] && source ~/.config/shell/aliases.sh
 [ -f ~/.config/shell/bindkeys.sh ] && source ~/.config/shell/bindkeys.sh
+[ -f ~/.config/shell/functions.sh ] && source ~/.config/shell/functions.sh
 [ -f ~/.config/shell/history_settings.sh ] && source ~/.config/shell/history_settings.sh
 
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
