@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+whoami=baimw
+
+# variables
+config=$HOME/.config/hypr
+scripts=$config/waybar_scripts
+
+# notification daemon
+mako &
+
+# waybar
+$scripts/launch_waybar &
+
+# wallpaper
+$scripts/wall $config/wallpapers/a.jpg &
+
+# effects
+#$scripts/rgb &
+
+# other
+notify-send -a aurora "hello $(whoami)" &
