@@ -3,27 +3,55 @@ case $- in  # check shell options
       *) return;;  # don't do anything
 esac
 
-[ -f ~/.config/shell/colors.sh ] && source ~/.config/shell/colors.sh
-[ -f ~/.config/shell/aliases.sh ] && source ~/.config/shell/aliases.sh
-[ -f ~/.config/shell/bindkeys.sh ] && source ~/.config/shell/bindkeys.sh
-[ -f ~/.config/shell/functions.sh ] && source ~/.config/shell/functions.sh
-[ -f ~/.config/shell/history_settings.sh ] && source ~/.config/shell/history_settings.sh
+load_file() {
+    local file="$1"
+    if [[ -f "$file" ]]; then
+        if source "$file" 2>/dev/null; then
+            return 0
+        else
+            echo >&2 "[WARN] Failed to load: $file"
+            return 1
+        fi
+    else
+        echo >&2 "[INFO] File not found, skipping: $file"
+        return 1
+    fi
+}
 
-# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-# [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source $_ || :
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# git clone https://github.com/zap-zsh/sudo.git ~/.zsh/zsh-sudo
-# [ -f ~/.zsh/zsh-sudo/sudo.plugin.zsh ] && source $_ || :
-source ~/.zsh/zsh-sudo/sudo.plugin.zsh
-# git clone https://github.com/catppuccin/zsh-syntax-highlighting.git ~/.zsh/zsh-catppuccin
-# [ -f ~/.zsh/zsh-catppuccin/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh ] && source $_ || :
-source ~/.zsh/zsh-catppuccin/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+CONFIG_FILES="${HOME}/.config/shell"
+FUNCTIONS_DIR="${CONFIG_FILES}/scripts"
+ZSH_PLUGIN_HOME="${HOME}/.zsh"
+
+# config files
+for config_file in "${CONFIG_FILES}"/*.{sh,zsh}(N); do
+    load_file "$config_file"
+done
+
+# custom functions
+for func_file in "${FUNCTIONS_DIR}"/*.{sh,zsh}(N); do
+    load_file "$func_file"
+done
+
+# git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
+# git clone https://github.com/zap-zsh/sudo.git $HOME/.zsh/zsh-sudo
+# git clone https://github.com/catppuccin/zsh-syntax-highlighting.git $HOME/.zsh/zsh-catppuccin
+# git clone https://github.com/unixorn/fzf-zsh-plugin.git $HOME/.zsh/fzf-zsh-plugin
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting $HOME/.zsh/zsh-syntax-highlighting
+# zsh plugins
+for plugin_dir in "${ZSH_PLUGIN_HOME}"/*(N); do
+    if [[ "$plugin_dir" != */zsh-syntax-highlighting ]]; then
+        for plugin_file in "$plugin_dir"/*.{zsh,plugin.zsh}(N); do
+            load_file "$plugin_file"
+        done
+    fi
+done
+[ -f "${ZSH_PLUGIN_HOME}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
+    load_file "${ZSH_PLUGIN_HOME}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" || \
+    echo >&2 "[Warning] load zsh-syntax-highlighting faild, skipping"
 
 # starship
 eval "$(starship init zsh)"
 
 # fzf
-[ -f ~/.config/shell/fzf.sh ] && source ~/.config/shell/fzf.sh
+[ -f ${CONFIG_FILES}/fzf.zsh ] && source ${CONFIG_FILES}/fzf.zsh || echo >&2 "[Warning] load fzf.sh faild, skipping"
 # source <(/usr/bin/fzf --zsh)
