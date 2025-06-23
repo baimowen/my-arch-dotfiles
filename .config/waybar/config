@@ -6,7 +6,7 @@
     "margin": "0 0 0 0",  // 边距
     
     "modules-left": ["hyprland/workspaces"],  // 位于waybar左侧位置的模块
-    "modules-center": ["custom/island"],  // 位于waybar中间位置的模块
+    "modules-center": ["custom/record","custom/island"],  // 位于waybar中间位置的模块
     "modules-right": ["custom/input-lang","custom/network","clock"],  // 位于waybar右侧位置的模块
 
     // custom modules //
@@ -24,6 +24,15 @@
     },
 
     // center ////////////////////////////
+
+    "custom/record": {
+        "exec": "/home/arch/.config/waybar/scripts/record/record.sh",
+        "interval": 1,  // 1秒刷新一次状态
+        "return-type": "json",
+        "format": "{}",
+        "on-click": "/home/arch/.config/waybar/scripts/record/record.sh screenshot",
+        "on-click-right": "/home/arch/.config/waybar/scripts/record/record.sh record"
+    },
 
     // mpd
     "mpd": {
@@ -71,13 +80,13 @@
     "exec": "/home/arch/.config/waybar/scripts/network/network.sh",
     "interval": 10,  // 每 10 秒更新一次
     "format": "{}",
-    "on-click": "nm-connection-editor",  // 点击打开 nm-hyprland
-    "on-click-right": "kitty -e nmtui"  // 右键打开 nmtui（可选）
+    "on-click": "nm-connection-editor",  // 点击打开 nmgui
+    "on-click-right": "kitty -e nmtui"  // 右键打开 nmtui
     },
 
     // 时钟
     "clock": {
-        // "timezone": "America/New_York",
+        // "timezone": "Asia/Shanghai",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 60,
         "format": "{:%H:%M}",
