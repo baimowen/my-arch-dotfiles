@@ -1,4 +1,4 @@
-bat() {
+batl() {
     local file="$1"
     local lang=""
 

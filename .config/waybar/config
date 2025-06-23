@@ -1,0 +1,86 @@
+{
+    "layer": "top",  // 在所有窗口上方
+    "position": "top",  // waybar在屏幕上的位置(top|bottom|left|right)
+    
+    "height": 30,  // 高度
+    "margin": "0 0 0 0",  // 边距
+    
+    "modules-left": ["hyprland/workspaces"],  // 位于waybar左侧位置的模块
+    "modules-center": ["custom/island"],  // 位于waybar中间位置的模块
+    "modules-right": ["custom/input-lang","custom/network","clock"],  // 位于waybar右侧位置的模块
+
+    // custom modules //
+
+    // left ////////////////////////////
+    
+    // 工作区
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-active": " {icon} ",
+        "on-click": "activate"
+        // "format-icons":{
+        //     "10":"10"
+        // }
+    },
+
+    // center ////////////////////////////
+
+    // mpd
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
+    // 灵动岛
+    "custom/island": {
+        "exec": "/home/arch/.config/waybar/scripts/island/start_island.sh",
+        "return-type": "json",
+        "on-click": "mpc toggle",
+        "escape":true
+    },
+
+    // right ////////////////////////////
+
+    // 输入法语言
+    // "custom/input-lang":{},
+
+    // 网络设置
+    "custom/network": {
+    "exec": "/home/arch/.config/waybar/scripts/network/network.sh",
+    "interval": 10,  // 每 10 秒更新一次
+    "format": "{}",
+    "on-click": "nm-connection-editor",  // 点击打开 nm-hyprland
+    "on-click-right": "kitty -e nmtui"  // 右键打开 nmtui（可选）
+    },
+
+    // 时钟
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 60,
+        "format": "{:%H:%M}",
+        "max-length": 25
+    },
+}
