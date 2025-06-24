@@ -26,14 +26,14 @@ case $1 in
             # 开始录屏
             touch "$RECORD_LOCK_FILE"
             wf-recorder --audio -f "$VIDEO_DIR/$RECORD_NAME" --no-audio &
-            echo '{"text":"● 录屏中","class":"recording","tooltip":"录屏中 (点击结束)"}'
+            echo '{"text":"●","class":"recording","tooltip":"录屏中 (点击结束)"}'
         fi
         ;;
     *)
         if [ -f "$RECORD_LOCK_FILE" ]; then
-            echo '{"text":"● 录屏中","class":"recording","tooltip":"录屏中 (点击结束)"}'
+            echo '{"text":"●","class":"recording","tooltip":"录屏中 (点击结束)"}'
         else
-            echo '{"text":"","tooltip":"截图/录屏 (左键: 截图, 右键: 录屏)"}'
+            echo '{"text":" ","tooltip":"截图/录屏 (左键: 截图, 右键: 录屏)"}'
         fi
         ;;
 esac

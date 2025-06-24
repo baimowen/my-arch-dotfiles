@@ -81,7 +81,7 @@
     "interval": 10,  // 每 10 秒更新一次
     "format": "{}",
     "on-click": "nm-connection-editor",  // 点击打开 nmgui
-    "on-click-right": "kitty -e nmtui"  // 右键打开 nmtui
+    "on-click-right": "kitty -e nmtui"  // 右键打开 kitty:nmtui
     },
 
     // 时钟

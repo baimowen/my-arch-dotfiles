@@ -1,7 +1,7 @@
 截图录屏需要的软件包：
 
 ```bash
-sudo pacman -S --noconfirm grim slurp wf-recorder pipewire mako libnotify --needed
+sudo pacman -S --noconfirm grim slurp wf-recorder dunst pipewire mako libnotify --needed
 ```
 
 网络管理需要的软件包：

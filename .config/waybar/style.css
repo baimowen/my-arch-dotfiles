@@ -11,16 +11,15 @@ window#waybar {
 /* 统一样式 */
 #clock,
 #battery,
-#temperature,
 #backlight,
-#network,
+#custom-network,
 #pulseaudio,
 #custom-media,
 #tray,
 #mode,
 #idle_inhibitor,
 #custom-island,
-#custom-ss,
+#custom-record,
 #custom-dynamic_pill,
 #mpd {
     padding: 0 10px;
@@ -237,32 +236,51 @@ window#waybar {
 }
 
 /* 网络样式 */
-#network{
-    color:#000;
+#custom-network label {
+    font-family: "Symbols Nerd Font";
 }
 
-#network.disabled{
-    background-color: #45475a;
-}
-
-#network.disconnected{
+#custom-network{
+    color:#fff;
     background: rgb(243,139,168);
     background: linear-gradient(45deg, rgba(243,139,168,1) 0%, rgba(250,179,135,1) 100%); 
-    color: #fff;
     font-weight: bolder;
     padding-top: 3px;
     padding-right: 11px;
 }
 
-#network.linked, #network.wifi{
+#custom-network.disabled{
+    background-color: #45475a;
+}
+
+#custom-network.disconnected{
+    background: rgb(243,139,168);
+    background: linear-gradient(45deg, rgba(243,139,168,1) 0%, rgba(250,179,135,1) 100%); 
+    color: #f00;
+    font-weight: bolder;
+    padding-top: 3px;
+    padding-right: 11px;
+}
+
+#custom-network.linked, #network.wifi{
     background-color: #a6e3a1 ;
 }
 
-#network.ethernet{
+#custom-network.ethernet{
     background-color:#f9e2af ;
 }
 
 /* 录屏样式 */
+#custom-record{
+    background: #11111b;
+    color: #89b4fa;
+    font-weight:  bolder;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+}
+
 #custom-record.recording {
     color: #ff0000;
     animation: blink 1s infinite;
@@ -309,13 +327,3 @@ window#waybar {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
-
-/* #custom-ss{
-    background: #11111b;
-    color: #89b4fa;
-    font-weight:  bolder;
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 15px;
-} */
