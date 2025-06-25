@@ -8,6 +8,7 @@ SCREENSHOT_NAME="Screenshot_$TIMESTAMP.png"
 RECORD_NAME="Record_$TIMESTAMP.mp4"
 RECORD_PID_FILE="/tmp/wf-recorder.pid"
 RECORD_LOCK_FILE="/tmp/wf-recorder.lock"
+LOG_FILE="/tmp/wf-recorder.log"
 
 # 处理点击事件
 case $1 in
@@ -25,7 +26,7 @@ case $1 in
         else
             # 开始录屏
             touch "$RECORD_LOCK_FILE"
-            wf-recorder --audio -f "$VIDEO_DIR/$RECORD_NAME" --no-audio &
+            wf-recorder -f "$VIDEO_DIR/$RECORD_NAME" --no-audio > "$LOG_FILE" 2>&1 &
             echo '{"text":"●","class":"recording","tooltip":"录屏中 (点击结束)"}'
         fi
         ;;

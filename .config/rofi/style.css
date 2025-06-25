@@ -1,0 +1,66 @@
+* {
+    /* 尺寸 */
+    width:  1280px;
+    height: 645px;
+    lines: 7;
+    
+    /* 布局 */
+    border-radius: 24px;
+    scrollbar: false;
+    spacing: 8px;
+    padding: 0;
+}
+
+window {
+    background-color: @bg-col;
+    opacity: 0.7;
+    blur: true;
+    width: @width;
+    height: @height;
+    location: center;
+    anchor: center;
+    border-color: @lavender;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: @surface0;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 20px;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @blue;
+    padding: 0 8px 0 0;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @text;
+    placeholder-color: @overlay0;
+}
+
+listview {
+    columns: 1;               /* 列 */
+    spacing: 10px;
+    padding: 0 20px 20px 20px;
+    dynamic: true;
+}
+
+element {
+    padding: 12px;
+    border-radius: 12px;
+    text-color: @text;
+    background-color: @surface0;
+}
+
+element selected {
+    background-color: @blue;
+    text-color: @crust;
+}
+
+element-icon {
+    size: 28px;
+}

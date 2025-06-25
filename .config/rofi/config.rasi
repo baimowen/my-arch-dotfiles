@@ -1,11 +1,12 @@
-configuration {
-  font: "Source Code Pro 16px";
-  location: 0;
-  fixed-num-lines: true;
-  show-icons: true;
-  scroll-method: 1;
-  cycle: true;
-  matching: "fuzzy";
-}
+@import "fonts.rasi"
+@import "style.css"
+@import "colors.rasi"
 
-@import "theme"
+configuration {
+    modi: "drun,window,run";
+    show: "drun";
+    icon-theme: "Papirus";
+    show-icons: true;
+    disable-history: false;
+    sidebar-mode: false;
+}

@@ -34,6 +34,14 @@
         "on-click-right": "/home/arch/.config/waybar/scripts/record/record.sh record"
     },
 
+    // 灵动岛
+    "custom/island": {
+        "exec": "/home/arch/.config/waybar/scripts/island/start_island.sh",
+        "return-type": "json",
+        "on-click": "mpc toggle",
+        "escape":true
+    },
+
     // mpd
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -60,14 +68,6 @@
         },
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
-    },
-
-    // 灵动岛
-    "custom/island": {
-        "exec": "/home/arch/.config/waybar/scripts/island/start_island.sh",
-        "return-type": "json",
-        "on-click": "mpc toggle",
-        "escape":true
     },
 
     // right ////////////////////////////
