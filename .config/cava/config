@@ -10,3 +10,10 @@ gradient_color_5 = '#8839ef'
 gradient_color_6 = '#ea76cb'
 gradient_color_7 = '#e64553'
 gradient_color_8 = '#d20f39'
+
+[input]
+method = pulse
+source = auto
+
+[output]
+method = ncurses
