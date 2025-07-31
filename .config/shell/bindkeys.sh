@@ -5,3 +5,5 @@
 # bind key: esc esc -> sudo
 # bindkey -M viins '\e\e' sudo
 # bindkey -M vicmd '\e\e' sudo
+bindkey -r "^I"
+bindkey "^I" complete-word

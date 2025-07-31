@@ -2,9 +2,9 @@
 if [ -z "${WAYLAND_DISPLAY}" ] && [ "$(tty)" = "/dev/tty1" ]; then
     exec Hyprland
 fi
-if ! pgrep -u $USER pulseaudio > /dev/null; then
-    pulseaudio --start
-fi
+# if ! pgrep -u $USER pulseaudio > /dev/null; then
+#     pulseaudio --start
+# fi
 
 # cava xterm-256color
 export TERM=xterm-256color

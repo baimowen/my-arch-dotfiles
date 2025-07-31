@@ -51,10 +51,6 @@ alias tkp='tmux kill-pane'
 alias fzf='fzf --height 40% --layout reverse --border --ansi --multi'
 # <<< fzf <<<
 
-# >>> kill >>>
-alias kill='killfzf'
-# <<< kill <<<
-
 # >>> bat >>>
 alias bat='bat --style=plain --color=always --paging=never --theme=ansi'
 # <<< bat <<<
